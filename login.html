@@ -13,21 +13,27 @@
 
 <div class="container-login">
   <div class="login-box">
-    <h2>Entrar na conta</h2>
+
+    <h2 id="titulo">Entrar</h2>
 
     <input id="email" placeholder="Email">
     <input id="senha" type="password" placeholder="Senha">
 
-    <button id="btnLogin">Entrar</button>
-    <button id="btnCadastro">Criar conta</button>
+    <!-- só aparece no cadastro -->
+    <input id="confirmarSenha" type="password" placeholder="Confirmar senha" style="display:none;">
+
+    <button id="btnPrincipal">Entrar</button>
+
+    <p id="toggleModo" style="margin-top:10px; cursor:pointer; color:#7b2cbf;">
+      Não tem conta? Criar conta
+    </p>
 
     <a href="index.html" class="voltar">← Voltar</a>
+
   </div>
 </div>
 
-<footer>
-  © 2026 Alugaê
-</footer>
+<footer>© 2026 Alugaê</footer>
 
 <script type="module" src="login.js"></script>
 
