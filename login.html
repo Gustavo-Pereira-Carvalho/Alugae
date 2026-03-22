@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Login</title>
+  <title>Login / Cadastro - Alugaê</title>
   <link rel="stylesheet" href="style/login.css">
 </head>
 <body>
@@ -16,17 +16,21 @@
 
     <h2 id="titulo">Entrar</h2>
 
-    <input id="email" placeholder="Email">
+    <input id="email" type="email" placeholder="Email">
     <input id="senha" type="password" placeholder="Senha">
-
-    <!-- só aparece no cadastro -->
     <input id="confirmarSenha" type="password" placeholder="Confirmar senha" style="display:none;">
+
+    <!-- Checkbox de termos -->
+    <div class="termos-container" style="display:none;">
+      <label>
+        <input type="checkbox" id="aceitoTermos">
+        Aceito os <span id="abrirTermos" class="link-modal">Termos de Uso</span>
+      </label>
+    </div>
 
     <button id="btnPrincipal">Entrar</button>
 
-    <p id="toggleModo" style="margin-top:10px; cursor:pointer; color:#7b2cbf;">
-      Não tem conta? Criar conta
-    </p>
+    <p id="toggleModo">Não tem conta? Criar conta</p>
 
     <a href="index.html" class="voltar">← Voltar</a>
 
@@ -35,7 +39,149 @@
 
 <footer>© 2026 Alugaê</footer>
 
-<script type="module" src="login.js"></script>
+<!-- MODAL TERMOS -->
+<!-- MODAL TERMOS -->
+<div id="modalTermos" class="modal">
+  <div class="modal-content">
+    <span class="fechar">&times;</span>
+    <h2>Termos de Uso - Alugaê</h2>
+    <div class="modal-text">
+      <p>
+        <strong>1. APRESENTAÇÃO</strong><br>
+        A Alugaê é uma plataforma digital que atua como intermediadora de locação de bens móveis entre usuários, permitindo que pessoas físicas disponibilizem produtos de sua propriedade para aluguel a terceiros mediante remuneração.<br>
+        A plataforma não é proprietária dos bens anunciados, atuando exclusivamente como facilitadora tecnológica e financeira das transações realizadas entre os usuários.<br>
+        É expressamente proibida a disponibilização de veículos automotores, armas, produtos ilícitos ou quaisquer itens proibidos por lei.<br>
+        Os serviços são atualmente disponibilizados exclusivamente no município de São Paulo.<br><br>
 
+        <strong>2. ACEITAÇÃO DOS TERMOS</strong><br>
+        Ao acessar, cadastrar-se ou utilizar a plataforma, o usuário declara que leu, compreendeu e concorda integralmente com os presentes Termos de Uso e Política de Privacidade, assumindo todas as obrigações aqui previstas.<br><br>
+
+        <strong>3. CADASTRO DE USUÁRIOS</strong><br>
+        Para utilização dos serviços, o usuário deverá fornecer informações verdadeiras, completas e atualizadas, incluindo dados pessoais e financeiros.<br>
+        O usuário é integralmente responsável:<br>
+        - Pela veracidade dos dados fornecidos<br>
+        - Pela guarda e sigilo de login e senha<br>
+        - Por todas as atividades realizadas em sua conta<br>
+        - Pela atualização de suas informações cadastrais<br>
+        A Alugaê poderá suspender ou excluir contas que apresentem informações falsas ou indícios de fraude.<br><br>
+
+        <strong>4. FUNCIONAMENTO DA PLATAFORMA</strong><br>
+        A plataforma permite:<br>
+        I — Anúncio de bens móveis para locação<br>
+        II — Solicitação de aluguel de bens anunciados<br>
+        III — Processamento de pagamentos por meios eletrônicos<br>
+        IV — Intermediação financeira entre locador e locatário<br>
+        O valor da locação é definido exclusivamente pelo proprietário do bem.<br>
+        A Alugaê reterá percentual do valor da transação a título de taxa de intermediação.<br><br>
+
+        <strong>5. PAGAMENTOS E REMUNERAÇÃO</strong><br>
+        Os pagamentos serão realizados exclusivamente por meios digitais disponibilizados na plataforma.<br>
+        Após a confirmação da transação:<br>
+        - O locador receberá o valor correspondente ao aluguel<br>
+        - A Alugaê reterá percentual previamente informado como taxa de serviço<br>
+        - A plataforma poderá alterar suas taxas mediante aviso prévio.<br><br>
+
+        <strong>6. RESPONSABILIDADE PELO USO DO BEM</strong><br>
+        O locatário compromete-se a:<br>
+        - Utilizar o bem de forma adequada<br>
+        - Preservar suas características originais<br>
+        - Devolver o produto nas mesmas condições em que recebeu<br>
+        É vedado qualquer uso indevido, negligente ou que cause danos ao produto.<br><br>
+
+        <strong>7. DANOS, QUEBRA OU EXTRAVIO</strong><br>
+        Em caso de dano, quebra, perda ou inutilização do bem durante o período de posse do locatário, este deverá:<br>
+        I — Arcar integralmente com os custos de reparo<br>
+        II — Indenizar o proprietário pelo valor integral do bem, quando irreparável<br>
+        III — Pagar taxa administrativa decorrente do ocorrido<br>
+        A recusa de pagamento autoriza a adoção de medidas judiciais cabíveis.<br><br>
+
+        <strong>8. ROUBO, FURTO, APROPRIAÇÃO INDÉBITA E NÃO DEVOLUÇÃO</strong><br>
+        O locatário é responsável pela guarda do bem durante todo o período da locação.<br>
+        Em caso de:<br>
+        - Roubo<br>
+        - Furto por negligência<br>
+        - Apropriação indébita<br>
+        - Não devolução no prazo acordado<br>
+        - Tentativa de fraude<br>
+        O usuário deverá:<br>
+        a) Comunicar imediatamente a plataforma<br>
+        b) Registrar ocorrência junto à Polícia Civil<br>
+        c) Indenizar integralmente o proprietário pelo valor de mercado do bem<br>
+        d) Arcar com taxas administrativas e perdas adicionais<br>
+        A recusa poderá resultar em bloqueio permanente da conta, inclusão em cadastros de inadimplência, ação judicial de cobrança e comunicação às autoridades policiais.<br>
+        A Alugaê poderá fornecer dados às autoridades mediante requisição legal.<br><br>
+
+        <strong>9. CONDUTAS PROIBIDAS</strong><br>
+        É proibido:<br>
+        - Anunciar produtos ilícitos<br>
+        - Anunciar veículos automotores<br>
+        - Praticar fraudes<br>
+        - Fornecer informações falsas<br>
+        - Descumprir obrigações de locação<br>
+        - Realizar transações fora da plataforma<br>
+        O descumprimento poderá resultar na exclusão da conta e responsabilização legal.<br><br>
+
+        <strong>10. LIMITAÇÃO DE RESPONSABILIDADE</strong><br>
+        A Alugaê não se responsabiliza:<br>
+        - Pela qualidade ou estado dos bens anunciados<br>
+        - Pela conduta dos usuários<br>
+        - Por prejuízos decorrentes de mau uso<br>
+        - Por negociações realizadas fora da plataforma<br>
+        A responsabilidade pelos bens é exclusiva do proprietário e do locatário.<br><br>
+
+        <strong>11. PRIVACIDADE E PROTEÇÃO DE DADOS</strong><br>
+        A Alugaê realiza o tratamento de dados pessoais em conformidade com a Lei Geral de Proteção de Dados Pessoais.<br><br>
+
+        <strong>12. DADOS COLETADOS</strong><br>
+        Poderão ser coletados:<br>
+        - Nome completo<br>
+        - CPF<br>
+        - Documento de identidade<br>
+        - Endereço<br>
+        - Telefone e e-mail<br>
+        - Informações de pagamento<br>
+        - Endereço IP e dados de navegação<br><br>
+
+        <strong>13. FINALIDADE DO TRATAMENTO DE DADOS</strong><br>
+        Os dados são utilizados para:<br>
+        - Identificação dos usuários<br>
+        - Processamento de pagamentos<br>
+        - Prevenção a fraudes<br>
+        - Cumprimento de obrigações legais<br>
+        - Melhoria da experiência do usuário<br><br>
+
+        <strong>14. COMPARTILHAMENTO DE DADOS</strong><br>
+        Os dados poderão ser compartilhados com:<br>
+        - Intermediadores de pagamento<br>
+        - Prestadores de serviços tecnológicos<br>
+        - Autoridades públicas mediante determinação legal<br>
+        A Alugaê não comercializa dados pessoais.<br><br>
+
+        <strong>15. SEGURANÇA DAS INFORMAÇÕES</strong><br>
+        São adotadas medidas técnicas e administrativas para proteger dados contra acessos não autorizados, vazamentos ou destruição.<br><br>
+
+        <strong>16. DIREITOS DOS USUÁRIOS</strong><br>
+        Nos termos da legislação vigente, o usuário poderá solicitar:<br>
+        - Acesso aos dados<br>
+        - Correção de dados incorretos<br>
+        - Exclusão de dados<br>
+        - Revogação de consentimento<br>
+        - Portabilidade das informações<br><br>
+
+        <strong>17. ALTERAÇÕES DOS TERMOS</strong><br>
+        A Alugaê poderá modificar estes Termos a qualquer momento, mediante publicação atualizada na plataforma.<br><br>
+
+        <strong>18. LEGISLAÇÃO APLICÁVEL E FORO</strong><br>
+        Estes Termos são regidos pelas leis da República Federativa do Brasil.<br>
+        Fica eleito o foro da Comarca de São Paulo para dirimir quaisquer controvérsias.<br><br>
+
+        <strong>19. CONTATO</strong><br>
+        Questões jurídicas e solicitações poderão ser realizadas pelos canais oficiais da plataforma.
+      </p>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="login.js"></script>
 </body>
 </html>

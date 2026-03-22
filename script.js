@@ -14,6 +14,7 @@ const btnLogin = document.getElementById("btnLogin");
 const btnCad = document.getElementById("btnCad");
 const btnHeader = document.getElementById("btnHeader");
 
+
 onAuthStateChanged(auth, (user) => {
   if (user) {
     if(btnLogin) btnLogin.style.display = "none";
