@@ -2,6 +2,7 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Produto</title>
   <link rel="stylesheet" href="style/produto.css">
 </head>
@@ -10,15 +11,19 @@
 <div class="container-produto">
   <div class="produto-box">
 
-    <img id="imagem" class="produto-img">
+    <!-- Imagem do item -->
+    <img id="imagem" class="produto-img" alt="Imagem do produto">
 
+    <!-- Informações do item -->
     <div class="produto-info">
       <h1 id="nome"></h1>
       <p id="preco" class="produto-preco"></p>
       <p id="cidade" class="produto-cidade"></p>
 
+      <!-- Botão de contato -->
       <button class="btn-alugar">Falar no WhatsApp</button>
 
+      <!-- Botão de voltar -->
       <a href="index.html" class="voltar">← Voltar</a>
     </div>
 
@@ -26,6 +31,5 @@
 </div>
 
 <script type="module" src="produto.js"></script>
-
 </body>
 </html>

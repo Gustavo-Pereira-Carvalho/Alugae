@@ -23,7 +23,6 @@ body {
     );
     padding: 30px 70px;
     color: white;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -49,22 +48,14 @@ body {
     border-radius: 20px;
     width: 100%;
     max-width: 520px;
-
     box-shadow: 0 20px 50px rgba(0,0,0,0.12);
-
     animation: fadeUp 0.5s ease;
 }
 
 /* ANIMAÇÃO */
 @keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* TITULO */
@@ -74,22 +65,20 @@ body {
     font-size: 22px;
 }
 
-/* INPUTS */
-.form-box input {
+/* INPUTS E SELECT */
+.form-box input,
+.form-box select {
     width: 100%;
     padding: 14px;
     margin-bottom: 15px;
-
     border-radius: 12px;
     border: 1px solid #ddd;
-
     background: #f9f9f9;
-
     transition: 0.2s;
 }
 
-/* FOCUS */
-.form-box input:focus {
+.form-box input:focus,
+.form-box select:focus {
     outline: none;
     border: 1px solid #9d4edd;
     background: white;
@@ -100,15 +89,12 @@ body {
 .form-box button {
     width: 100%;
     padding: 14px;
-
     background: linear-gradient(135deg, #ff8c42, #ffb347);
     border: none;
     border-radius: 12px;
-
     color: white;
     font-weight: bold;
     font-size: 15px;
-
     cursor: pointer;
     transition: 0.3s;
 }
@@ -126,13 +112,10 @@ body {
     text-decoration: none;
     color: #7b2cbf;
     font-weight: 600;
-
     transition: 0.2s;
 }
 
-.voltar:hover {
-    opacity: 0.7;
-}
+.voltar:hover { opacity: 0.7; }
 
 /* FOOTER */
 footer {
@@ -142,13 +125,26 @@ footer {
     text-align: center;
 }
 
-/* RESPONSIVO */
-@media (max-width: 600px) {
-    .header-anunciar {
+/* Responsivo */
+@media (max-width: 768px) {
+    .container-anunciar {
         padding: 20px;
     }
 
     .form-box {
         padding: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-box h2 {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .form-box input,
+    .form-box button {
+        font-size: 14px;
+        padding: 12px;
     }
 }

@@ -1,46 +1,37 @@
-import { db } from "./firebase.js";
+import { db, auth } from "./firebaseini.js";
+import { addDoc, collection } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-import {
-  addDoc,
-  collection
-} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
-// inputs
+// elementos
 const nomeInput = document.getElementById("nomeItem");
 const precoInput = document.getElementById("precoItem");
 const cidadeInput = document.getElementById("cidadeItem");
 const imagemInput = document.getElementById("imagemItem");
 const telefoneInput = document.getElementById("telefoneItem");
+const categoriaSelect = document.getElementById("categoriaItem");
 const btn = document.getElementById("btnSalvar");
-import { auth } from "./firebase.js";
 
-import { 
-  onAuthStateChanged 
-} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-
+// 🔒 PROTEGER PÁGINA
 onAuthStateChanged(auth, (user) => {
   if (!user) {
     alert("Você precisa estar logado!");
     window.location.href = "login.html";
-  } else {
-    console.log("Usuário logado:", user.email);
   }
 });
 
+// 🚀 SALVAR ITEM
 async function salvarItem() {
-  const nome = nomeInput.value;
-  const preco = precoInput.value;
-  const cidade = cidadeInput.value;
-  const imagem = imagemInput.value;
-  const telefone = telefoneInput.value;
+  const user = auth.currentUser;
 
-  if (!nome || !preco || !cidade || !imagem || !telefone) {
-    alert("Preencha tudo!");
-    return;
-  }
+  const nome = nomeInput.value.trim();
+  const preco = precoInput.value.trim();
+  const cidade = cidadeInput.value.trim();
+  const imagem = imagemInput.value.trim();
+  const telefone = telefoneInput.value.trim();
+  const categoria = categoriaSelect.value;
 
-  if (telefone.length < 10) {
-    alert("Telefone inválido!");
+  if (!nome || !preco || !cidade || !imagem || !telefone || !categoria) {
+    alert("Preencha todos os campos!");
     return;
   }
 
@@ -50,14 +41,13 @@ async function salvarItem() {
     cidade,
     imagem,
     telefone,
-    criadoEm: new Date()
+    categoria,
+    criadoEm: new Date(),
+    userId: user.uid
   });
 
   alert("Item publicado 🚀");
-
   window.location.href = "index.html";
 }
 
-if (btn) {
-  btn.addEventListener("click", salvarItem);
-}
+btn.addEventListener("click", salvarItem);
