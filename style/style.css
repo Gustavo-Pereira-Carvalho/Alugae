@@ -282,11 +282,6 @@ header {
   flex-wrap: wrap;
   gap: 10px;
 }
-.display-itens {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-}
 
 
 /* textos */
@@ -340,8 +335,8 @@ main {
 }
 .display-itens {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 25px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
 }
 
 /* CARD ITEM */
