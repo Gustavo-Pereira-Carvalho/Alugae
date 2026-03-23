@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meu Perfil</title>
+  <link rel="stylesheet" href="style/perfil.css">
+</head>
+<body>
+
+<div class="container">
+  <div class="perfil-box">
+    <h1>Meu Perfil</h1>
+
+    <!-- FOTO -->
+    <div class="foto-box">
+      <img id="previewFoto" src="img/user.png">
+      <input type="text" id="foto" placeholder="URL da foto">
+    </div>
+
+    <!-- DADOS -->
+    <input type="text" id="nome" placeholder="Seu nome">
+    <input type="text" id="telefone" placeholder="Telefone">
+
+    <!-- CEP -->
+    <div class="linha">
+      <input type="text" id="cep" placeholder="CEP">
+      <button id="buscarCep">Buscar</button>
+    </div>
+
+    <input type="text" id="cidade" placeholder="Cidade">
+    <input type="text" id="endereco" placeholder="Endereço">
+    <input type="text" id="numero" placeholder="Número da casa"> <!-- NOVO -->
+
+    <button id="salvar">Salvar Perfil</button>
+  </div>
+</div>
+
+<script type="module" src="perfil.js"></script>
+
+
+</body>
+</html>

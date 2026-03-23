@@ -105,6 +105,30 @@ body {
 .voltar:hover {
     opacity: 0.7;
 }
+/* DONO */
+.dono {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+    cursor: pointer;
+}
+
+.dono:hover {
+    opacity: 0.7;
+}
+
+.dono img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.dono span {
+    font-weight: bold;
+    color: #4b116f;
+}
 
 /* RESPONSIVO */
 @media (max-width: 1024px) {

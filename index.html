@@ -1,91 +1,107 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style/style.css" />
-    <title>Alugaê</title>
-  </head>
-  <body>
-    <header>
-      <div class="display">
-        <img style="height: 50px" src="img/ALUGAE.png" alt="logo" />
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style/style.css"/>
+  <!-- <link rel="stylesheet" href="style/header.css"> -->
+  <title>Alugaê</title>
+</head>
 
-        <div class="nav">
-          <button class="btn-nav">Explorar</button>
-          <a href="meus-anuncios.html" class="btn-nav btn-anun" >Meus anúncios</a>
-          <a href="anunciar.html">
-            <button class="btn-nav">Anunciar Item</button>
-          </a>
-        </div>
+<body>
 
-        <div class="btn-header" id="btnHeader">
-          <a href="login.html" id="btnLogin"><button class="btn-login">Login</button></a>
-          <a href="login.html" id="btnCad"><button class="btn-cad">Cadastrar</button></a>
-        </div>
+<!-- HEADER GLOBAL -->
+<header class="header-global">
+  <div class="header-container">
+
+    <img src="img/ALUGAE.png" class="logo">
+
+    <div class="nav">
+      <button class="btn-nav">Explorar</button>
+      <a href="meus-anuncios.html" class="btn-nav">Meus anúncios</a>
+      <a href="anunciar.html" class="btn-nav destaque">Anunciar</a>
+    </div>
+
+    <div id="headerActions"></div>
+
+  </div>
+</header>
+
+<!-- HERO (SEU ANTIGO HEADER) -->
+<section class="hero">
+
+  <h2>Alugue qualquer coisa <br> perto de você</h2>
+  <p>Ferramentas, eletrônicos, carros e muito mais</p>
+
+  <div class="search">
+    <input class="pesquisa" placeholder="O que você quer alugar?">
+    <button class="search-button">Buscar</button>
+  </div>
+
+  <!-- FILTRO DE DISTÂNCIA -->
+  <div class="filtro-proximidade">
+    <input type="number" id="distanciaMax" placeholder="Distância máxima (km)">
+    <button id="btnFiltrarDistancia">Filtrar por proximidade</button>
+  </div>
+
+</section>
+
+<main>
+
+  <div class="destaques">
+    <div class="display">
+      <h2>Destaques</h2>
+    </div>
+
+    <div class="display-destaque">
+
+      <div class="card-destaque" data-categoria="Todos">
+        <img src="https://cdn-icons-png.flaticon.com/256/1828/1828817.png">
+        <p>Todos</p>
       </div>
 
-      <h2>
-        Alugue qualquer coisa <br />
-        perto de você
-      </h2>
-      <p>Ferramentas, eletrônicos, carros e muito mais</p>
-
-      <div class="search">
-        <input class="pesquisa" placeholder="O que você quer alugar?" />
-        <button class="search-button">Buscar</button>
-      </div>
-    </header>
-
-    <main>
-      <div class="destaques">
-        <div class="display">
-          <h2>Destaques</h2>
-        </div>
-
-        <div class="display-destaque">
-          <div class="card-destaque" data-categoria="Todos">
-            <img src="https://cdn-icons-png.flaticon.com/256/1828/1828817.png" alt="Todos"/>
-            <p>Todos</p>
-          </div>
-
-          <div class="card-destaque" data-categoria="Roupa">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4fIv9JFoRRFgzzuKBTy8FpMLytyKiL764jA&s" alt="Roupa"/>
-            <p>Roupa</p>
-          </div>
-
-          <div class="card-destaque" data-categoria="Ferramentas">
-            <img src="https://cdn-icons-png.flaticon.com/256/8248/8248093.png" alt="Ferramentas"/>
-            <p>Ferramentas</p>
-          </div>
-
-          <div class="card-destaque" data-categoria="Games">
-            <img src="https://images.emojiterra.com/google/android-11/512px/1f3ae.png" alt="Games"/>
-            <p>Games</p>
-          </div>
-
-          <div class="card-destaque" data-categoria="Equipamentos">
-            <img src="https://images.emojiterra.com/google/noto-emoji/unicode-17.0/color/svg/1f4f7.svg" alt="Equipamentos"/>
-            <p>Equipamentos</p>
-          </div>
-
-          <div class="card-destaque" data-categoria="Outros">
-            <img src="https://cdn-icons-png.flaticon.com/256/565/565547.png" alt="Outros"/>
-            <p>Outros</p>
-          </div>
-        </div>
+      <div class="card-destaque" data-categoria="Roupa">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4fIv9JFoRRFgzzuKBTy8FpMLytyKiL764jA&s">
+        <p>Roupa</p>
       </div>
 
-      <div class="itens">
-        <div class="display">
-          <h2>Alugue</h2>
-        </div>
-
-        <div class="display-itens"></div>
+      <div class="card-destaque" data-categoria="Ferramentas">
+        <img src="https://cdn-icons-png.flaticon.com/256/8248/8248093.png">
+        <p>Ferramentas</p>
       </div>
-    </main>
 
-    <footer>@ 2026 Alugaê. Todos os direitos reservados</footer>
-    <script type="module" src="script.js"></script>
-  </body>
+      <div class="card-destaque" data-categoria="Games">
+        <img src="https://images.emojiterra.com/google/android-11/512px/1f3ae.png">
+        <p>Games</p>
+      </div>
+
+      <div class="card-destaque" data-categoria="Equipamentos">
+        <img src="https://images.emojiterra.com/google/noto-emoji/unicode-17.0/color/svg/1f4f7.svg">
+        <p>Equipamentos</p>
+      </div>
+
+      <div class="card-destaque" data-categoria="Outros">
+        <img src="https://cdn-icons-png.flaticon.com/256/565/565547.png">
+        <p>Outros</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="itens">
+    <div class="display">
+      <h2>Alugue</h2>
+    </div>
+
+    <div class="display-itens"></div>
+  </div>
+
+</main>
+
+<footer>@ 2026 Alugaê. Todos os direitos reservados</footer>
+
+<script type="module" src="script.js"></script>
+<script type="module" src="header.js"></script>
+
+</body>
 </html>
