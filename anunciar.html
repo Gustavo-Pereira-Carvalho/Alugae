@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style/anunciar.css">
   <link rel="stylesheet" href="style/header.css">
+   <link rel="stylesheet" href="style/whatsapp.css">
 </head>
 <body>
 
@@ -52,5 +53,10 @@
 
 <script type="module" src="anunciar.js"></script>
 <script type="module" src="header.js"></script>
+<script type="module">
+  import { initWhatsAppButton } from "./components/whatsapp.js";
+
+  initWhatsAppButton();
+</script>
 </body>
 </html>

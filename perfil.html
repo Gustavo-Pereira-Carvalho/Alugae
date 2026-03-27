@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Meu Perfil</title>
   <link rel="stylesheet" href="style/perfil.css">
+   <link rel="stylesheet" href="style/whatsapp.css">
 </head>
 <body>
 
@@ -37,6 +38,11 @@
 </div>
 
 <script type="module" src="perfil.js"></script>
+<script type="module">
+  import { initWhatsAppButton } from "./components/whatsapp.js";
+
+  initWhatsAppButton();
+</script>
 
 
 </body>

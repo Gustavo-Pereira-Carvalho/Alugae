@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="stylesheet" href="style/style.css"/>
+  <link rel="stylesheet" href="style/whatsapp.css">
   <!-- <link rel="stylesheet" href="style/header.css"> -->
   <title>Alugaê</title>
 </head>
@@ -19,7 +20,6 @@
     <div class="nav">
       <button class="btn-nav">Explorar</button>
       <a href="meus-anuncios.html" class="btn-nav">Meus anúncios</a>
-      <a href="anunciar.html" class="btn-nav destaque">Anunciar</a>
     </div>
 
     <div id="headerActions"></div>
@@ -103,5 +103,10 @@
 <script type="module" src="script.js"></script>
 <script type="module" src="header.js"></script>
 
+<script type="module">
+  import { initWhatsAppButton } from "./components/whatsapp.js";
+
+  initWhatsAppButton();
+</script>
 </body>
 </html>

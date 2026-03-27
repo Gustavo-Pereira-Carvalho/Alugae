@@ -6,6 +6,7 @@
   <title>Meus Anúncios - Alugaê</title>
   <link rel="stylesheet" href="style/meus-anuncios.css">
   <link rel="stylesheet" href="style/header.css">
+   <link rel="stylesheet" href="style/whatsapp.css">
 </head>
 <body>
 
@@ -30,5 +31,10 @@
 
   <script type="module" src="meus.js"></script>
   <script type="module" src="header.js"></script>
+  <script type="module">
+  import { initWhatsAppButton } from "./components/whatsapp.js";
+
+  initWhatsAppButton();
+</script>
 </body>
 </html>
