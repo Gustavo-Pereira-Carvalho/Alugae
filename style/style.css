@@ -1,4 +1,4 @@
-/* RESET */
+/* ================= RESET ================= */
 * {
   margin: 0;
   padding: 0;
@@ -11,10 +11,10 @@ body {
   flex-direction: column;
   min-height: 100vh;
   overflow-x: hidden;
+  color: #333;
 }
 
 /* ================= HEADER ================= */
-
 .header-global {
   background: transparent;
   position: absolute;
@@ -37,7 +37,6 @@ body {
 /* LOGO */
 .logo {
   height: 50px;
-  object-fit: contain;
   cursor: pointer;
 }
 
@@ -51,10 +50,10 @@ body {
 .btn-nav {
   background: transparent;
   color: white;
-  cursor: pointer;
   border: none;
-  font-size: 14px;
+  cursor: pointer;
   text-decoration: none;
+  font-size: 14px;
 }
 
 .btn-nav.destaque {
@@ -72,8 +71,8 @@ body {
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  object-fit: cover;
   border: 2px solid white;
+  object-fit: cover;
   cursor: pointer;
 }
 
@@ -93,11 +92,9 @@ body {
   display: none;
   flex-direction: column;
   gap: 5px;
-
   z-index: 999;
 }
 
-/* 🔥 CORREÇÃO PRINCIPAL */
 .dropdown.ativo {
   display: flex;
 }
@@ -109,8 +106,8 @@ body {
   text-align: left;
   border-radius: 8px;
   cursor: pointer;
-  color: #333;
   font-size: 14px;
+  color: #333;
 }
 
 .dropdown button:hover {
@@ -122,42 +119,37 @@ body {
 }
 
 /* ================= HERO ================= */
-
 .hero {
   background-image:
     linear-gradient(
       90deg,
-      rgba(123, 44, 191, 0.95) 0%,
-      rgba(157, 78, 221, 0.85) 40%,
-      rgba(199, 125, 255, 0.7) 70%,
-      rgba(224, 170, 255, 0.4) 100%
+      rgba(123, 44, 191, 0.95),
+      rgba(157, 78, 221, 0.85),
+      rgba(199, 125, 255, 0.7),
+      rgba(224, 170, 255, 0.4)
     ),
     url("../img/WhatsApp Image 2026-03-23 at 16.36.47.jpeg");
 
   background-position: center;
   background-size: cover;
-  background-repeat: no-repeat;
-  padding: 60px 50px;
-  padding-top: 90px;
+  padding: 100px 20px 60px;
   color: white;
 }
 
 .hero h2 {
-  margin-top: 40px;
   font-size: 42px;
-  font-weight: bold;
+  margin-top: 20px;
 }
 
 .hero p {
   margin-top: 10px;
-  font-size: 18px;
   opacity: 0.9;
 }
 
 /* BUSCA */
 .search {
   margin-top: 20px;
-  background-color: white;
+  background: white;
   padding: 10px;
   border-radius: 12px;
   display: flex;
@@ -169,8 +161,8 @@ body {
   flex: 1;
   padding: 10px;
   border-radius: 8px;
-  background-color: #f3f1f1;
   border: none;
+  background: #f3f1f1;
 }
 
 .search-button {
@@ -197,15 +189,14 @@ body {
 
 .filtro-proximidade button {
   padding: 8px 16px;
-  background-color: #3b82f6;
-  color: #fff;
+  background: #3b82f6;
+  color: white;
   border: none;
   border-radius: 6px;
   cursor: pointer;
 }
 
 /* ================= MAIN ================= */
-
 main {
   padding: 40px 70px;
 }
@@ -228,15 +219,26 @@ main {
   display: flex;
   align-items: center;
   gap: 12px;
-  background-color: white;
+  background: white;
   padding: 12px 16px;
   border-radius: 12px;
   cursor: pointer;
+
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: 0.2s;
+}
+
+.card-destaque:hover {
+  transform: translateY(-3px);
 }
 
 .card-destaque img {
   width: 40px;
   height: 40px;
+}
+
+.card-destaque p {
+  font-weight: 600;
 }
 
 /* ITENS */
@@ -246,29 +248,77 @@ main {
   gap: 20px;
 }
 
+/* CARD */
 .card-item {
-  background-color: white;
+  background: white;
   border-radius: 15px;
   padding: 15px;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.card-item:hover {
+  transform: translateY(-5px);
 }
 
 .card-item img {
   width: 100%;
   height: 200px;
   border-radius: 10px;
+  object-fit: cover;
+}
+
+/* TEXTOS DO CARD */
+.card-item h3 {
+  color: #5e2491;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.card-item p {
+  color: #5e2491;
+  font-size: 13px;
+}
+.card-item h2{
+  color: #5e2491;
+}
+
+.preco {
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+/* BOTÃO VER MAIS */
+.btn-item {
+  margin-top: 10px;
+  padding: 10px;
+  width: 100%;
+
+  background: linear-gradient(135deg, #7b2cbf, #9d4edd);
+  color: white;
+
+  border: none;
+  border-radius: 10px;
+
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-item:hover {
+  transform: scale(1.03);
+  opacity: 0.9;
 }
 
 /* ================= FOOTER ================= */
-
 footer {
-  background-color: blueviolet;
+  background: blueviolet;
   color: white;
   padding: 15px;
   text-align: center;
 }
 
 /* ================= MOBILE ================= */
-
 @media (max-width: 1000px) {
 
   .nav {
@@ -289,6 +339,7 @@ footer {
   }
 
   .hero h2 {
+
     font-size: 26px;
   }
 
