@@ -146,6 +146,33 @@ body {
   opacity: 0.9;
 }
 
+/* BOTÃO LOGIN (HEADER) */
+.btn-header {
+  padding: 8px 16px;
+  border-radius: 10px;
+  border: none;
+
+  background: linear-gradient(135deg, #7b2cbf, #9d4edd);
+  color: white;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+/* HOVER */
+.btn-header:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(123, 44, 191, 0.4);
+}
+
+/* CLIQUE */
+.btn-header:active {
+  transform: scale(0.95);
+}
+
 /* BUSCA */
 .search {
   margin-top: 20px;
