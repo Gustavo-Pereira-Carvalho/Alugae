@@ -42,29 +42,45 @@ function renderHeader(user, foto) {
     const dropdown = document.createElement("div");
     dropdown.classList.add("dropdown");
 
-    // BOTÕES
+    // ================= BOTÕES =================
+
     const btnPerfil = document.createElement("button");
-    btnPerfil.textContent = "Meu perfil";
+    btnPerfil.textContent = "👤 Meu perfil";
     btnPerfil.onclick = () => window.location.href = "perfil.html";
 
     const btnMeus = document.createElement("button");
-    btnMeus.textContent = "Meus anúncios";
+    btnMeus.textContent = "📢 Meus anúncios";
     btnMeus.onclick = () => window.location.href = "meus-anuncios.html";
+
+    const btnPedidos = document.createElement("button");
+    btnPedidos.textContent = "📦 Meus pedidos";
+    btnPedidos.onclick = () => window.location.href = "meusPedidos.html";
+
+    const btnRecebidos = document.createElement("button");
+    btnRecebidos.textContent = "🛒 Pedidos recebidos";
+    btnRecebidos.onclick = () => window.location.href = "pedidosVendedor.html";
+
+    const btnFinanceiro = document.createElement("button");
+    btnFinanceiro.textContent = "💰 Financeiro";
+    btnFinanceiro.onclick = () => window.location.href = "painelVendedor.html";
 
     const btnAnunciar = document.createElement("button");
     btnAnunciar.textContent = "📢 Anunciar";
     btnAnunciar.onclick = () => window.location.href = "anunciar.html";
 
     const btnSair = document.createElement("button");
-    btnSair.textContent = "Sair";
+    btnSair.textContent = "🚪 Sair";
     btnSair.onclick = async () => {
       await signOut(auth);
       window.location.href = "index.html";
     };
 
-    // ORDEM DO DROPDOWN
+    // ================= ORDEM MENU =================
     dropdown.appendChild(btnPerfil);
     dropdown.appendChild(btnMeus);
+    dropdown.appendChild(btnPedidos);
+    dropdown.appendChild(btnRecebidos);
+    dropdown.appendChild(btnFinanceiro);
 
     // 👉 MOBILE: botão anunciar dentro do menu
     if (isMobile) {
@@ -73,11 +89,11 @@ function renderHeader(user, foto) {
 
     dropdown.appendChild(btnSair);
 
-    // MONTA
+    // ================= MONTA =================
     userBox.appendChild(img);
     userBox.appendChild(dropdown);
 
-    // TOGGLE
+    // ================= TOGGLE =================
     img.addEventListener("click", (e) => {
       e.stopPropagation();
       dropdown.classList.toggle("ativo");
@@ -93,13 +109,17 @@ function renderHeader(user, foto) {
     // ================= DESKTOP =================
     if (!isMobile && nav) {
 
-      const btnAnunciarDesktop = document.createElement("a");
-      btnAnunciarDesktop.textContent = "Anunciar";
-      btnAnunciarDesktop.href = "anunciar.html";
-      btnAnunciarDesktop.classList.add("btn-nav", "destaque");
+      // 🔥 EVITA DUPLICAR
+      if (!document.querySelector(".btn-anunciar")) {
 
-      // 🔥 COLOCA NA NAV (AO LADO DOS OUTROS)
-      nav.appendChild(btnAnunciarDesktop);
+        const btnAnunciarDesktop = document.createElement("a");
+        btnAnunciarDesktop.textContent = "Anunciar";
+        btnAnunciarDesktop.href = "anunciar.html";
+
+        btnAnunciarDesktop.classList.add("btn-nav", "destaque", "btn-anunciar");
+
+        nav.appendChild(btnAnunciarDesktop);
+      }
     }
 
   } else {

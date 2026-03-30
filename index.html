@@ -5,13 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="stylesheet" href="style/style.css"/>
   <link rel="stylesheet" href="style/whatsapp.css">
-  <!-- <link rel="stylesheet" href="style/header.css"> -->
   <title>Alugaê</title>
 </head>
 
 <body>
 
-<!-- HEADER GLOBAL -->
+<!-- HEADER -->
 <header class="header-global">
   <div class="header-container">
 
@@ -27,27 +26,21 @@
   </div>
 </header>
 
-<!-- HERO (SEU ANTIGO HEADER) -->
+<!-- HERO -->
 <section class="hero">
-
-  <h2>Alugue qualquer coisa <br> perto de você</h2>
-  <p>Ferramentas, eletrônicos, Games e muito mais</p>
+  <h2>Alugue qualquer coisa</h2>
+  <p>Ferramentas, eletrônicos, games e muito mais</p>
 
   <div class="search">
     <input class="pesquisa" placeholder="O que você quer alugar?">
     <button class="search-button">Buscar</button>
   </div>
-
-  <!-- FILTRO DE DISTÂNCIA -->
-  <div class="filtro-proximidade">
-    <input type="number" id="distanciaMax" placeholder="Distância máxima (km)">
-    <button id="btnFiltrarDistancia">Filtrar por proximidade</button>
-  </div>
-
 </section>
 
+<!-- MAIN -->
 <main>
 
+  <!-- DESTAQUES -->
   <div class="destaques">
     <div class="display">
       <h2>Destaques</h2>
@@ -88,6 +81,7 @@
     </div>
   </div>
 
+  <!-- ITENS -->
   <div class="itens">
     <div class="display">
       <h2>Alugue</h2>
@@ -105,8 +99,8 @@
 
 <script type="module">
   import { initWhatsAppButton } from "./components/whatsapp.js";
-
   initWhatsAppButton();
 </script>
+
 </body>
 </html>

@@ -4,9 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Meus Anúncios - Alugaê</title>
+
   <link rel="stylesheet" href="style/meus-anuncios.css">
   <link rel="stylesheet" href="style/header.css">
-   <link rel="stylesheet" href="style/whatsapp.css">
+  <link rel="stylesheet" href="style/whatsapp.css">
 </head>
 <body>
 
@@ -19,9 +20,16 @@
   </header>
 
   <!-- CONTEÚDO -->
-  <main>
-    <h2>Meus anúncios</h2>
+  <main class="container-anunciar">
+    <h2 style="margin-bottom: 20px;">Meus anúncios</h2>
+
+    <!-- LISTA -->
     <div class="display-itens"></div>
+
+    <!-- BOTÃO EXTRA -->
+    <a href="anunciar.html" class="voltar" style="margin-top:20px;">
+      + Criar novo anúncio
+    </a>
   </main>
 
   <!-- FOOTER -->
@@ -29,12 +37,14 @@
     © 2026 Alugaê
   </footer>
 
+  <!-- SCRIPTS -->
   <script type="module" src="meus.js"></script>
   <script type="module" src="header.js"></script>
-  <script type="module">
-  import { initWhatsAppButton } from "./components/whatsapp.js";
 
-  initWhatsAppButton();
-</script>
+  <script type="module">
+    import { initWhatsAppButton } from "./components/whatsapp.js";
+    initWhatsAppButton();
+  </script>
+
 </body>
 </html>

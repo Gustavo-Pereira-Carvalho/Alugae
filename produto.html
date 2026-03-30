@@ -3,47 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Produto</title>
+  <title>Alugaê - Produto</title>
   <link rel="stylesheet" href="style/produto.css">
-   <link rel="stylesheet" href="style/whatsapp.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 </head>
 <body>
 
 <div class="container-produto">
+
   <div class="produto-box">
-
-    <!-- Imagem -->
-    <img id="imagem" class="produto-img" alt="Imagem do produto">
-
-    <!-- Info -->
-    <div class="produto-info">
-      <h1 id="nome"></h1>
-      <p id="preco" class="produto-preco"></p>
-      <p id="cidade" class="produto-cidade"></p>
-      <p id="endereco" class="produto-endereco"></p>
-      <p id="distancia" class="produto-distancia"></p>
-
-      <!-- 👤 DONO -->
-      <div class="dono" id="donoBox">
-        <img id="userFoto" alt="Foto do usuário">
-        <span id="userNome"></span>
-      </div>
-
-      <!-- Botão -->
-      <button class="btn-alugar">Falar no WhatsApp</button>
-
-      <!-- Voltar -->
-      <a href="index.html" class="voltar">← Voltar</a>
+    <div>
+      <img id="imagem" class="produto-img" src="" alt="Produto">
     </div>
 
+    <div class="produto-info">
+      <h1 id="nome">Produto</h1>
+      <p id="descricao">Descrição do produto...</p>
+      <h2 class="produto-preco" id="preco">R$0/dia</h2>
+
+      <div class="dono">
+        <img src="img/user.png" alt="Dono">
+        <span id="nomeDono">Nome do dono</span>
+      </div>
+
+      <div class="opcoes-entrega">
+        <label for="tipoEntrega">Escolha a entrega</label>
+        <select id="tipoEntrega">
+          <option value="retirar">Retirar no local</option>
+          <option value="moto">Moto (R$20)</option>
+          <option value="carro">Carro (R$50)</option>
+        </select>
+      </div>
+
+      <div class="box-aluguel">
+        <h3>Selecione as datas</h3>
+        <input id="calendario" placeholder="Escolha o período" readonly>
+        <p class="recomendacao">Datas já alugadas estão bloqueadas</p>
+        <p class="total" id="total">Total: R$0</p>
+        <div class="botoes-acoes">
+          <button id="btnAlugar" class="btn-alugar">Alugar</button>
+          <button id="btnWhats" class="btn-whatsapp">WhatsApp</button>
+        </div>
+      </div>
+    </div>
   </div>
+
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script type="module" src="produto.js"></script>
-<script type="module">
-  import { initWhatsAppButton } from "./components/whatsapp.js";
-
-  initWhatsAppButton();
-</script>
 </body>
 </html>

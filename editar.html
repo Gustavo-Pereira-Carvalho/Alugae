@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Anunciar</title>
+  <title>Editar Anúncio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheet" href="style/anunciar.css">
@@ -20,11 +20,13 @@
 
 <div class="container-anunciar">
   <div class="form-box">
-    <h2>Anunciar novo item</h2>
+    <h2>Editar item</h2>
 
     <input id="nomeItem" placeholder="Nome do item">
     <input id="precoItem" type="number" placeholder="Preço por dia">
+
     <textarea id="descricaoItem" placeholder="Descrição do produto"></textarea>
+
     <input id="telefoneItem" placeholder="Telefone">
     <input id="imagemItem" placeholder="URL da imagem">
 
@@ -37,6 +39,12 @@
       <option value="Outros">Outros</option>
     </select>
 
+    <select id="entregaItem">
+      <option value="">Entrega disponível?</option>
+      <option value="true">Sim</option>
+      <option value="false">Não</option>
+    </select>
+
     <select id="tamanhoItem">
       <option value="">Tamanho do item</option>
       <option value="pequeno">Pequeno</option>
@@ -44,14 +52,9 @@
       <option value="grande">Grande</option>
     </select>
 
-    <label>Tipos de entrega disponíveis:</label>
-    <div class="entrega-opcoes">
-      <label><input type="checkbox" id="entregaMoto"> Moto (R$20)</label>
-      <label><input type="checkbox" id="entregaCarro"> Carro (R$50)</label>
-    </div>
+    <button id="btnSalvar">Salvar alterações</button>
 
-    <button id="btnSalvar">Publicar</button>
-    <a href="index.html" class="voltar">← Voltar</a>
+    <a href="meus-anuncios.html" class="voltar">← Voltar</a>
   </div>
 </div>
 
@@ -59,8 +62,9 @@
   © 2026 Alugaê
 </footer>
 
-<script type="module" src="anunciar.js"></script>
+<script type="module" src="editar.js"></script>
 <script type="module" src="header.js"></script>
+
 <script type="module">
   import { initWhatsAppButton } from "./components/whatsapp.js";
   initWhatsAppButton();

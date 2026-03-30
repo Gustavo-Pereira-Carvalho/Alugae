@@ -2,22 +2,25 @@ import { db, auth } from "./firebaseini.js";
 import { addDoc, collection, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-// elementos
+// ELEMENTOS
 const nomeInput = document.getElementById("nomeItem");
 const precoInput = document.getElementById("precoItem");
-const cidadeInput = document.getElementById("cidadeItem");
-const enderecoInput = document.getElementById("enderecoItem");
-const numeroInput = document.getElementById("numeroItem");
+const descricaoInput = document.getElementById("descricaoItem");
 const telefoneInput = document.getElementById("telefoneItem");
 const imagemInput = document.getElementById("imagemItem");
 const categoriaSelect = document.getElementById("categoriaItem");
+const tamanhoSelect = document.getElementById("tamanhoItem");
 const btn = document.getElementById("btnSalvar");
+
+const entregaMotoCheckbox = document.getElementById("entregaMoto");
+const entregaCarroCheckbox = document.getElementById("entregaCarro");
 
 let userAtual = null;
 let dadosPerfil = null;
 
-// 🔒 PROTEGER + CARREGAR PERFIL
+// 🔒 PROTEGER ROTA
 onAuthStateChanged(auth, async (user) => {
+
   if (!user) {
     alert("Você precisa estar logado!");
     window.location.href = "login.html";
@@ -37,11 +40,6 @@ onAuthStateChanged(auth, async (user) => {
     }
 
     dadosPerfil = snap.data();
-
-    // 🔥 AUTO PREENCHER
-    cidadeInput.value = dadosPerfil.cidade || "";
-    enderecoInput.value = dadosPerfil.endereco || "";
-    numeroInput.value = dadosPerfil.numero || "";
     telefoneInput.value = dadosPerfil.telefone || "";
 
   } catch (erro) {
@@ -52,6 +50,7 @@ onAuthStateChanged(auth, async (user) => {
 
 // 🚀 SALVAR ITEM
 async function salvarItem() {
+
   if (!userAtual || !dadosPerfil) {
     alert("Erro de autenticação");
     return;
@@ -59,71 +58,44 @@ async function salvarItem() {
 
   const nome = nomeInput.value.trim();
   const preco = precoInput.value.trim();
-  const cidade = cidadeInput.value.trim() || dadosPerfil.cidade;
-  const endereco = enderecoInput.value.trim() || dadosPerfil.endereco;
-  const numero = numeroInput.value.trim() || dadosPerfil.numero;
-  const telefone = telefoneInput.value.trim() || dadosPerfil.telefone;
+  const descricao = descricaoInput.value.trim();
+  const telefone = telefoneInput.value.trim();
   const imagem = imagemInput.value.trim();
   const categoria = categoriaSelect.value;
+  const tamanho = tamanhoSelect.value;
 
-  if (!nome || !preco || !cidade || !endereco || !numero || !imagem || !telefone || !categoria) {
+  const entregaMoto = entregaMotoCheckbox.checked;
+  const entregaCarro = entregaCarroCheckbox.checked;
+
+  if (!nome || !preco || !descricao || !telefone || !imagem || !categoria || !tamanho) {
     alert("Preencha todos os campos!");
     return;
   }
 
-  // 📍 Transformar endereço completo em lat/lng
-  let lat = null;
-  let lng = null;
-
-  const enderecoCompleto = `${endereco}, ${numero}, ${cidade}, Brasil`;
-
-  try {
-    const pos = await new Promise((resolve, reject) => {
-      navigator.geolocation.getCurrentPosition(resolve, reject);
-    });
-
-    lat = pos.coords.latitude;
-    lng = pos.coords.longitude;
-
-  } catch (erro) {
-    console.log("Geolocalização falhou, tentando pelo endereço...");
-
-    try {
-      // Geocoding usando Nominatim (OpenStreetMap)
-      const res = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(enderecoCompleto)}`);
-      const data = await res.json();
-
-      if (data.length > 0) {
-        lat = parseFloat(data[0].lat);
-        lng = parseFloat(data[0].lon);
-      } else {
-        console.log("Não foi possível obter latitude/longitude do endereço");
-      }
-    } catch (erro2) {
-      console.error("Erro ao pegar lat/lng pelo endereço:", erro2);
-    }
+  if (!entregaMoto && !entregaCarro) {
+    alert("Escolha pelo menos um tipo de entrega disponível!");
+    return;
   }
 
   try {
     await addDoc(collection(db, "itens"), {
       nome,
       preco: Number(preco),
-      cidade,
-      endereco,
-      numero,
+      descricao,
       telefone,
       imagem,
       categoria,
+      tamanho,
+      entregaOpcoes: {
+        moto: entregaMoto,
+        carro: entregaCarro
+      },
       criadoEm: new Date(),
 
-      // 👤 dados do usuário
+      // dados do usuário
       userId: userAtual.uid,
       nomeUsuario: dadosPerfil.nome,
-      fotoUsuario: dadosPerfil.foto,
-
-      // 🔥 lat/lng
-      lat,
-      lng
+      fotoUsuario: dadosPerfil.foto
     });
 
     alert("Item publicado 🚀");

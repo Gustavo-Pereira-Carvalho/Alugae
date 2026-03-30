@@ -1,5 +1,14 @@
 import { db, auth } from "./firebaseini.js";
-import { collection, getDocs, query, where, orderBy, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import {
+  collection,
+  getDocs,
+  query,
+  where,
+  orderBy,
+  deleteDoc,
+  doc
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 const container = document.querySelector(".display-itens");
@@ -12,21 +21,10 @@ onAuthStateChanged(auth, async (user) => {
     return;
   }
 
-  try {
-    await carregarItens(user.uid);
-  } catch (error) {
-    console.error("Erro ao carregar itens:", error);
-    container.innerHTML = "<p class='nenhum-item'>Erro ao carregar 😔</p>";
-  }
-
+  carregarItens(user.uid);
 });
 
 async function carregarItens(userId) {
-
-  if (!container) {
-    console.error("Container .display-itens não encontrado ❌");
-    return;
-  }
 
   container.innerHTML = "<p class='nenhum-item'>Carregando...</p>";
 
@@ -37,24 +35,19 @@ async function carregarItens(userId) {
       orderBy("criadoEm", "desc")
     );
 
-    const querySnapshot = await getDocs(q);
+    const snapshot = await getDocs(q);
 
     const itens = [];
 
-    querySnapshot.forEach(docSnap => {
+    snapshot.forEach(docSnap => {
       itens.push({ id: docSnap.id, ...docSnap.data() });
     });
 
     mostrarItens(itens);
 
-  } catch (error) {
-    console.error("Erro Firestore:", error);
-
-    if (error.message.includes("index")) {
-      container.innerHTML = "<p class='nenhum-item'>Crie o índice no Firebase ⚠️</p>";
-    } else {
-      container.innerHTML = "<p class='nenhum-item'>Erro ao carregar 😔</p>";
-    }
+  } catch (erro) {
+    console.error(erro);
+    container.innerHTML = "<p class='nenhum-item'>Erro ao carregar 😔</p>";
   }
 }
 
@@ -72,15 +65,24 @@ function mostrarItens(itens) {
     const card = document.createElement("div");
     card.classList.add("card-item");
 
+    const entrega = item.entrega
+      ? "🚚 Entrega"
+      : "📍 Retirada";
+
+    const tamanho = item.tamanho
+      ? `📦 ${item.tamanho}`
+      : "";
+
     card.innerHTML = `
-      <img src="${item.imagem}" alt="${item.nome}">
+      <img src="${item.imagem || 'img/default.png'}">
       <h3>${item.nome}</h3>
       <h2>R$${item.preco}/dia</h2>
-      <p>${item.cidade}</p>
-      <div>
-        <a href="produto.html?id=${item.id}">
-          <button class="btn-item">Ver mais</button>
-        </a>
+
+      <p class="info-extra">${entrega} • ${tamanho}</p>
+
+      <div class="acoes">
+        <button class="btn-item">Ver</button>
+        <button class="btn-editar">Editar</button>
         <button class="btn-excluir">Excluir</button>
       </div>
     `;
@@ -91,22 +93,30 @@ function mostrarItens(itens) {
       card.classList.add("show");
     }, index * 100);
 
-    // EXCLUIR
-    card.querySelector(".btn-excluir").addEventListener("click", async () => {
+    // VER
+    card.querySelector(".btn-item").onclick = () => {
+      window.location.href = `produto.html?id=${item.id}`;
+    };
 
-      const confirma = confirm("Deseja realmente excluir este item?");
-      if (!confirma) return;
+    // EDITAR
+    card.querySelector(".btn-editar").onclick = () => {
+      window.location.href = `editar.html?id=${item.id}`;
+    };
+
+    // EXCLUIR
+    card.querySelector(".btn-excluir").onclick = async () => {
+
+      const confirmar = confirm("Deseja excluir este item?");
+      if (!confirmar) return;
 
       try {
         await deleteDoc(doc(db, "itens", item.id));
         card.remove();
-
-      } catch (err) {
-        console.error("Erro ao excluir item:", err);
+      } catch (erro) {
+        console.error(erro);
         alert("Erro ao excluir ❌");
       }
-
-    });
+    };
 
   });
 }

@@ -1,4 +1,3 @@
-/* RESET */
 * {
     margin: 0;
     padding: 0;
@@ -10,56 +9,45 @@ body {
     background-color: #f5f6fa;
 }
 
-/* CONTAINER PRINCIPAL */
 .container-produto {
     max-width: 1100px;
     margin: 40px auto;
     padding: 20px;
 }
 
-/* CARD PRINCIPAL */
 .produto-box {
     background-color: white;
     border-radius: 20px;
     padding: 25px;
-
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 30px;
-
     box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: 0.3s;
 }
 
 .produto-box:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    transform: translateY(-6px) scale(1.01);
 }
 
-/* IMAGEM */
 .produto-img {
     width: 100%;
     border-radius: 15px;
     object-fit: cover;
-
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
-/* INFO */
 .produto-info {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-/* TÍTULO */
 .produto-info h1 {
     font-size: 32px;
     margin-bottom: 15px;
     color: #4b116f;
 }
 
-/* PREÇO */
 .produto-preco {
     font-size: 28px;
     color: #7b2cbf;
@@ -67,45 +55,6 @@ body {
     margin-bottom: 10px;
 }
 
-/* CIDADE */
-.produto-cidade {
-    font-size: 16px;
-    color: gray;
-    margin-bottom: 25px;
-}
-
-/* BOTÃO */
-.btn-alugar {
-    background: linear-gradient(135deg, #ff8c42, #ffb347);
-    color: white;
-    border: none;
-    padding: 15px;
-    border-radius: 12px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.3s;
-    width: fit-content;
-}
-
-.btn-alugar:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-}
-
-/* VOLTAR */
-.voltar {
-    display: inline-block;
-    margin-top: 20px;
-    text-decoration: none;
-    color: #7b2cbf;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.voltar:hover {
-    opacity: 0.7;
-}
-/* DONO */
 .dono {
     display: flex;
     align-items: center;
@@ -114,50 +63,104 @@ body {
     cursor: pointer;
 }
 
-.dono:hover {
-    opacity: 0.7;
-}
-
 .dono img {
     width: 45px;
     height: 45px;
     border-radius: 50%;
-    object-fit: cover;
 }
 
 .dono span {
     font-weight: bold;
-    color: #4b116f;
 }
 
-/* RESPONSIVO */
-@media (max-width: 1024px) {
+.opcoes-entrega {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.opcoes-entrega select {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    transition: 0.2s;
+}
+
+.opcoes-entrega select:focus {
+    outline: none;
+    border-color: #7b2cbf;
+}
+
+.box-aluguel {
+    margin-top: 20px;
+    padding: 18px;
+    background: #f4f0ff;
+    border-radius: 12px;
+    border: 1px solid #e2d9ff;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#calendario {
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    transition: 0.2s;
+}
+
+#calendario:focus {
+    outline: none;
+    border-color: #7b2cbf;
+    box-shadow: 0 0 0 2px rgba(123,44,191,0.1);
+}
+
+.total {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #6c2bd9;
+}
+
+.botoes-acoes {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.btn-alugar {
+    background: linear-gradient(135deg, #ff8c42, #ffb347);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-alugar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255,140,66,0.4);
+}
+
+.btn-whatsapp {
+    background: #25D366;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-whatsapp:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(37,211,102,0.4);
+}
+
+@media (max-width: 768px) {
     .produto-box {
         grid-template-columns: 1fr;
-        padding: 20px;
-    }
-
-    .produto-info h1 {
-        font-size: 28px;
-    }
-
-    .produto-preco {
-        font-size: 24px;
-    }
-}
-
-@media (max-width: 480px) {
-    .produto-info h1 {
-        font-size: 24px;
-    }
-
-    .produto-preco {
-        font-size: 20px;
-    }
-
-    .btn-alugar {
-        width: 100%;
-        text-align: center;
-        padding: 12px;
     }
 }

@@ -1,0 +1,29 @@
+body {
+  background: #f5f6fa;
+  font-family: Arial;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 40px auto;
+}
+
+.cards {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  flex: 1;
+}
+
+.item {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
