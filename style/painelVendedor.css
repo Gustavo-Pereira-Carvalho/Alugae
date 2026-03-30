@@ -1,50 +1,105 @@
-body {
-  background: #f5f6fa;
-  font-family: Arial;
+/* RESET BÁSICO */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
 }
 
+/* CONTAINER PRINCIPAL */
 .container {
   max-width: 900px;
   margin: 40px auto;
   padding: 20px;
 }
 
-h1 {
-  margin-bottom: 25px;
-  color: #4b116f;
+/* TÍTULO PRINCIPAL */
+.container h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2em;
+  color: #4B0082; /* roxo principal */
 }
 
+/* CARDS DE INFORMAÇÃO */
 .cards {
   display: flex;
-  gap: 15px;
+  gap: 20px;
   flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 30px;
 }
 
 .card {
-  background: white;
-  padding: 20px;
+  background-color: #f3f3f3;
   border-radius: 12px;
-  flex: 1;
+  padding: 20px;
+  flex: 1 1 200px;
+  min-width: 200px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
 
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
 .card h3 {
   margin-bottom: 10px;
+  color: #333;
+  font-size: 1.1em;
 }
 
 .card p {
-  font-size: 22px;
+  font-size: 1.4em;
   font-weight: bold;
-  color: #6c2bd9;
+  color: #4B0082;
 }
 
-button {
-  margin-top: 20px;
-  padding: 12px;
+/* BOTÃO DE SAQUE */
+#btnSaque {
+  display: block;
+  margin: 20px auto;
+  padding: 12px 25px;
+  background-color: #4B0082;
+  color: #fff;
   border: none;
   border-radius: 10px;
-  background: #7b2cbf;
-  color: white;
+  font-weight: bold;
+  font-size: 1em;
   cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+#btnSaque:hover {
+  background-color: #6a1ea1;
+  transform: translateY(-2px);
+}
+
+/* LINK VOLTAR */
+a {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  text-decoration: none;
+  color: #4B0082;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* RESPONSIVO */
+@media (max-width: 600px) {
+  .cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 100%;
+  }
 }

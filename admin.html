@@ -2,44 +2,35 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Admin</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Painel de Controle</title>
   <link rel="stylesheet" href="style/admin.css">
 </head>
 <body>
 
 <div class="container">
 
-  <h1>👑 Painel Admin</h1>
+  <h1>🛠 Painel de Administração</h1>
 
   <div class="cards">
-
     <div class="card">
-      <h3>💰 Ganho da plataforma</h3>
-      <p id="ganho">R$0</p>
+      <h3>Pedidos</h3>
+      <p id="totalPedidos">0</p>
     </div>
-
     <div class="card">
-      <h3>📦 Total de pedidos</h3>
-      <p id="pedidos">0</p>
+      <h3>Saques pendentes</h3>
+      <p id="totalSaques">0</p>
     </div>
-
-    <div class="card">
-      <h3>💸 Saques pendentes</h3>
-      <p id="saques">0</p>
-    </div>
-
   </div>
 
   <h2>📦 Pedidos</h2>
-  <div id="listaPedidos"></div>
+  <div id="listaPedidos" class="lista"></div>
 
   <h2>💸 Saques</h2>
-  <div id="listaSaques"></div>
+  <div id="listaSaques" class="lista"></div>
 
 </div>
 
 <script type="module" src="admin.js"></script>
-
 </body>
 </html>

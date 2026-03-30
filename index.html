@@ -90,12 +90,52 @@
     <div class="display-itens"></div>
   </div>
 
+<!-- ================= COMENTÁRIOS ================= -->
+<section class="comentarios-section">
+  <h2>Avaliações</h2>
+
+  <!-- Formulário de envio -->
+  <form class="comentario-form" id="comentarioForm">
+    <input type="text" id="nomeUsuario" placeholder="Seu nome" required>
+
+    <div class="estrelinhas-input">
+      <label>Avaliação:</label>
+      <div class="estrelinhas" id="estrelinhas">
+        <span data-value="1">☆</span>
+        <span data-value="2">☆</span>
+        <span data-value="3">☆</span>
+        <span data-value="4">☆</span>
+        <span data-value="5">☆</span>
+      </div>
+    </div>
+
+    <textarea id="mensagemUsuario" placeholder="Escreva seu comentário..." required></textarea>
+    <button type="submit">Enviar avaliação</button>
+  </form>
+
+  <!-- Lista de comentários -->
+  <div class="comentarios-list" id="comentariosList">
+    <!-- Comentários serão adicionados via JS -->
+  </div>
+</section>
+
 </main>
 
-<footer>@ 2026 Alugaê. Todos os direitos reservados</footer>
+<footer>
+  <div class="footer-container">
+    <p class="copyright">© 2026 Alugaê. Todos os direitos reservados</p>
+    <p class="contato">
+      Instagram: 
+      <a href="https://instagram.com/alugaeoficial_br" target="_blank">@alugaeoficial_br</a> | 
+      Email: 
+      <a href="mailto:alugaeoficial220@gmail.com">alugaeoficial220@gmail.com</a>
+    </p>
+  </div>
+</footer>
 
 <script type="module" src="script.js"></script>
 <script type="module" src="header.js"></script>
+<script type="module" src="comentarios.js"></script>
 
 <script type="module">
   import { initWhatsAppButton } from "./components/whatsapp.js";

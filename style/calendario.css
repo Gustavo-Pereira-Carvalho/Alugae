@@ -1,0 +1,15 @@
+input[type="date"] {
+  padding: 12px;
+  margin-top: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 100%;
+  font-size: 14px;
+}
+
+/* datas bloqueadas (somente visual) */
+input[type="date"].bloqueado {
+  background-color: #ffdede;
+  color: #a00;
+  pointer-events: none;
+}

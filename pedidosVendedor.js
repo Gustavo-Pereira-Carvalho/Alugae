@@ -1,5 +1,4 @@
 import { db, auth } from "./firebaseini.js";
-
 import {
   collection,
   query,
@@ -42,6 +41,12 @@ async function carregarPedidos() {
 
     const status = pedido.status || "pendente";
 
+    // 🔹 Montar texto de entrega
+    let entregaTexto = "Retirada no local";
+    if (pedido.frete === 20) entregaTexto = "Entrega: Moto (R$20)";
+    if (pedido.frete === 50) entregaTexto = "Entrega: Carro (R$50)";
+    if (pedido.frete === 0) entregaTexto = "Retirada no local";
+
     const card = document.createElement("div");
     card.className = "card";
 
@@ -49,6 +54,7 @@ async function carregarPedidos() {
       <h3>${pedido.nomeItem}</h3>
       <p>📅 ${pedido.dias} dias</p>
       <p>💰 R$${pedido.total}</p>
+      <p>🚚 ${entregaTexto}</p>
 
       <p class="status ${status}">
         Status: ${status}
