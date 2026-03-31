@@ -37,9 +37,11 @@ function mostrarItens(lista) {
     card.classList.add("card-item");
 
     // montar texto das opções de entrega
-    const opcoes = ["Retirada no local"]; // sempre incluir
-    if (item.entregaOpcoes?.moto) opcoes.push("Moto (R$20)");
-    if (item.entregaOpcoes?.carro) opcoes.push("Carro (R$50)");
+const opcoes = ["Retirada no local"];
+
+if (item.entregaOpcoes?.moto) opcoes.push("Moto (R$20)");
+if (item.entregaOpcoes?.carro) opcoes.push("Carro (R$25)");
+if (item.entregaOpcoes?.caminhao) opcoes.push("Caminhão (R$50)");
 
     const entregaTexto = opcoes.join(" / ");
 

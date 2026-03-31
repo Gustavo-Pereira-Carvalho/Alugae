@@ -14,13 +14,13 @@ const btn = document.getElementById("btnSalvar");
 
 const entregaMotoCheckbox = document.getElementById("entregaMoto");
 const entregaCarroCheckbox = document.getElementById("entregaCarro");
+const entregaCaminhaoCheckbox = document.getElementById("entregaCaminhao");
 
 let userAtual = null;
 let dadosPerfil = null;
 
 // 🔒 PROTEGER ROTA
 onAuthStateChanged(auth, async (user) => {
-
   if (!user) {
     alert("Você precisa estar logado!");
     window.location.href = "login.html";
@@ -50,7 +50,6 @@ onAuthStateChanged(auth, async (user) => {
 
 // 🚀 SALVAR ITEM
 async function salvarItem() {
-
   if (!userAtual || !dadosPerfil) {
     alert("Erro de autenticação");
     return;
@@ -66,14 +65,15 @@ async function salvarItem() {
 
   const entregaMoto = entregaMotoCheckbox.checked;
   const entregaCarro = entregaCarroCheckbox.checked;
+  const entregaCaminhao = entregaCaminhaoCheckbox.checked;
 
   if (!nome || !preco || !descricao || !telefone || !imagem || !categoria || !tamanho) {
     alert("Preencha todos os campos!");
     return;
   }
 
-  if (!entregaMoto && !entregaCarro) {
-    alert("Escolha pelo menos um tipo de entrega disponível!");
+  if (!entregaMoto && !entregaCarro && !entregaCaminhao) {
+    alert("Escolha pelo menos um tipo de entrega!");
     return;
   }
 
@@ -88,11 +88,11 @@ async function salvarItem() {
       tamanho,
       entregaOpcoes: {
         moto: entregaMoto,
-        carro: entregaCarro
+        carro: entregaCarro,
+        caminhao: entregaCaminhao
       },
       criadoEm: new Date(),
 
-      // dados do usuário
       userId: userAtual.uid,
       nomeUsuario: dadosPerfil.nome,
       fotoUsuario: dadosPerfil.foto

@@ -100,11 +100,38 @@ button:hover {
 
 /* FOOTER */
 footer {
-    background-color: #5a189a;
+  background: linear-gradient(135deg, #7b2cbf, #9d4edd);
+  color: white;
+  padding: 25px 20px;
   text-align: center;
-  padding: 15px;
-  color: #888;
-  font-size: 12px;
+  font-family: Arial, sans-serif;
+}
+
+.footer-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+footer p {
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+footer a {
+  color: #ffd700; /* amarelo/dourado para destacar */
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+footer a:hover {
+  text-decoration: underline;
+  color: #fff176; /* amarelo mais claro no hover */
+}
+
+footer .contato {
+  margin-top: 10px;
+  font-size: 15px;
 }
 
 /* 📱 RESPONSIVO */

@@ -60,7 +60,7 @@ async function carregarProduto() {
   imagemEl.src = item.imagem || "img/default.png";
   nomeDonoEl.innerText = item.nomeUsuario || "Dono";
 
-  // ✅ Ajustar opções de entrega de acordo com o que o anunciante marcou
+  // 🚚 OPÇÕES DE ENTREGA DINÂMICAS
   tipoEntrega.innerHTML = "";
   tipoEntrega.appendChild(new Option("Retirar no local", "retirar"));
 
@@ -69,7 +69,11 @@ async function carregarProduto() {
   }
 
   if (item.entregaOpcoes?.carro) {
-    tipoEntrega.appendChild(new Option("Carro (R$50)", "carro"));
+    tipoEntrega.appendChild(new Option("Carro (R$25)", "carro"));
+  }
+
+  if (item.entregaOpcoes?.caminhao) {
+    tipoEntrega.appendChild(new Option("Caminhão (R$50)", "caminhao"));
   }
 
   await carregarDatasBloqueadas();
@@ -102,7 +106,7 @@ async function carregarDatasBloqueadas() {
 
 // INICIALIZAR CALENDÁRIO
 function initCalendario() {
-  if(calendarioFlatpickr) calendarioFlatpickr.destroy();
+  if (calendarioFlatpickr) calendarioFlatpickr.destroy();
 
   calendarioFlatpickr = flatpickr(calendarioEl, {
     mode: "range",
@@ -125,6 +129,7 @@ function calcularTotal(selectedDates = null) {
   if (!itemGlobal) return;
 
   const dates = selectedDates || calendarioFlatpickr.selectedDates;
+
   if (dates.length !== 2) {
     totalEl.innerText = `Total: R$0`;
     return;
@@ -135,7 +140,8 @@ function calcularTotal(selectedDates = null) {
 
   let frete = 0;
   if (tipoEntrega.value === "moto") frete = 20;
-  if (tipoEntrega.value === "carro") frete = 50;
+  if (tipoEntrega.value === "carro") frete = 25;
+  if (tipoEntrega.value === "caminhao") frete = 50;
 
   const total = itemGlobal.preco * diffDays + frete;
   totalEl.innerText = `Total: R$${total.toFixed(2)}`;
@@ -149,7 +155,7 @@ function validarDatas() {
   let current = new Date(dates[0]);
   const endDate = new Date(dates[1]);
 
-  while(current <= endDate) {
+  while (current <= endDate) {
     if (datasBloqueadas.includes(formatDate(current))) {
       alert("Essa data já está alugada!");
       return false;
@@ -163,8 +169,10 @@ function validarDatas() {
 // BOTÃO ALUGAR
 btnAlugar.addEventListener("click", async () => {
   if (!id) return alert("Produto inválido!");
+
   const user = auth.currentUser;
   if (!user) return alert("Faça login");
+
   if (!validarDatas()) return;
 
   const dates = calendarioFlatpickr.selectedDates;
@@ -173,7 +181,8 @@ btnAlugar.addEventListener("click", async () => {
 
   let frete = 0;
   if (tipoEntrega.value === "moto") frete = 20;
-  if (tipoEntrega.value === "carro") frete = 50;
+  if (tipoEntrega.value === "carro") frete = 25;
+  if (tipoEntrega.value === "caminhao") frete = 50;
 
   const diffTime = Math.abs(dataFim - dataInicio);
   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1;
@@ -204,6 +213,7 @@ btnWhats.addEventListener("click", () => {
   window.open(`https://wa.me/55${numero}`);
 });
 
+// Atualizar total ao trocar entrega
 tipoEntrega.addEventListener("change", () => calcularTotal());
 
 // INICIAL
